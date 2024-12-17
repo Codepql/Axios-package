@@ -1,23 +1,23 @@
 import { BASE_URL, TIMEOUT } from "./config";
-import PLRequset from "./requset";
+import PLRequest from "./request";
 
 // 创建实例(可以创建很多实例)
 // 实例 1
-const plReuset = new PLRequset({
+const plRequest = new PLRequest({
   baseURL:BASE_URL,
   timeout:TIMEOUT
 })
 
 // 实例 2
-// export const plReuset2 = new PLRequset({
+// export const plReuset2 = new PLRequest({
 //   baseURL: "http://xxxxxxxx/api",
 //   timeout: 8000,
 //   interceptors: {
-//     requsetSuccseeFn:(config) => {
+//     requestSuccseeFn:(config) => {
 //       console.log("针对xxx请求成功拦截")
 //       return config
 //     },
-//     requsetFailureFn:(err) => {
+//     requestFailureFn:(err) => {
 //       console.log("针对xxx请求失败拦截")
 //       return err
 //     },
@@ -32,4 +32,4 @@ const plReuset = new PLRequset({
 //   }
 // })
 
-export default plReuset
+export default plRequest

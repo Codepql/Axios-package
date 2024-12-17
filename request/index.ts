@@ -1,15 +1,15 @@
 import axios from "axios"
 import type { AxiosInstance, AxiosRequestConfig} from "axios"
-import type { PLRequsetConfig } from './type'
+import type { PLRequestConfig } from './type'
 
 // 拦截器 蒙版loading/token/配置修改
 
 
-class PLRequset {
+class PLRequest {
   instance: AxiosInstance
 
   // request实例 => axios实例
-  constructor(config: PLRequsetConfig) {
+  constructor(config: PLRequestConfig) {
     this.instance = axios.create(config)
 
       // 每个 instance 都添加一个拦截器
@@ -33,8 +33,8 @@ class PLRequset {
 
     // 针对特定的PLRequest实例添加拦截器
     this.instance.interceptors.request.use(
-      config.interceptors?.requsetSuccseeFn,
-      config.interceptors?.requsetFailureFn
+      config.interceptors?.requestSuccseeFn,
+      config.interceptors?.requestFailureFn
     )
     this.instance.interceptors.response.use(
       config.interceptors?.responseSuccseeFn,
@@ -46,22 +46,22 @@ class PLRequset {
 
 
 
-  requset(config: AxiosRequestConfig) {
+  request(config: AxiosRequestConfig) {
     return this.instance.request(config)
   }
 
-  get<T = any>(config: PLRequsetConfig<T>) {
-    return this.requset({...config, method: "GET"})
+  get<T = any>(config: PLRequestConfig<T>) {
+    return this.request({...config, method: "GET"})
   }
-  post<T = any>(config: PLRequsetConfig<T>) {
-    return this.requset({...config, method: "POST"})
+  post<T = any>(config: PLRequestConfig<T>) {
+    return this.request({...config, method: "POST"})
   }
-  delete<T = any>(config: PLRequsetConfig<T>) {
-    return this.requset({...config, method: "DELETE"})
+  delete<T = any>(config: PLRequestConfig<T>) {
+    return this.request({...config, method: "DELETE"})
   }
-  patch<T = any>(config: PLRequsetConfig<T>) {
-    return this.requset({...config, method: "PATCH"})
+  patch<T = any>(config: PLRequestConfig<T>) {
+    return this.request({...config, method: "PATCH"})
   }
 }
 
-export default PLRequset
+export default PLRequest
